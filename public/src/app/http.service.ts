@@ -1,27 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable()
-
+@Injectable({
+  providedIn: 'root'
+})
 export class HttpService {
-  constructor(private _http: HttpClient){
+
+  constructor(private _http: HttpClient) { }
+
+  getAllBooks(){
+    console.log("Service: get all books");
+    return this._http.get("/api/books");
   }
-  getProducts(){
-    return this._http.get('/products-api');
+
+  getOneBook(id:string){
+    console.log("Service: get one book", id);
+    return this._http.get("/api/books/"+id);
   }
-  getProduct(id){
-    let url = '/products-api/' + id;
-    return this._http.get(url);
+
+  postBook(bookObj){
+    console.log("Service: post book", bookObj);
+    return this._http.post("/api/add", bookObj);
   }
-  // postToServer(newPet){
-  //   return this._http.post('/pets-api', newPet);  
-  // }
-  // putToServer(id, editPet){
-  //   let url = '/pets-api/' + id;
-  //   console.log(`Putting to url: ${url}`, editPet);
-  //   return this._http.put(url, editPet);
-  // }
-  // deleteFromServer(id){
-  //   return this._http.delete('/pets-api/' + id);  
-  // }
+
+  editBook(id:string, editBook:object){
+console.log("Service: edit book", editBook);
+    return this._http.put("/api/edit/"+id, editBook);
+  }
+
+  deleteBook(id:string){
+    console.log("Service: delete book", id);
+    return this._http.delete("/api/delete/"+id);
+  }
 }

@@ -1,0 +1,28 @@
+
+  <div id="box">
+      <div class="topnav">
+          <a class="active" href="">Home</a>
+          <!-- <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+           -->
+          <!-- <p class = "middle_text">Come in!</p> -->
+         
+        </div>
+        <div class = 'register'>
+          <a  href="#about">Login/Register</a>
+        </div>
+        <div>
+            <div class="search_bar">
+                  <input type="search" name="search" placeholder="Search Books" class="form__input" [(ngModel)] = "searchTerm">
+                  <button><a [routerLink]="['/books']">Search</a></button>
+            </div>
+        </div>
+    <div class="frame" *ngFor="let book of books | bookFilter: searchTerm">
+      <!-- <img src={{book.image}} alt="Image of {{book.title}}"> -->
+      
+      <h3>{{book.title}}</h3>
+      <h4>${{book.price}}</h4>
+      <button class="button btn btn-primary" [routerLink]="['/books', 'edit', book._id]">Edit</button>
+      <button class="button btn btn-primary" (click)="deleteBook(book._id)">Delete</button>
+    </div>
+  </div>

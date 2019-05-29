@@ -1,0 +1,18 @@
+
+  <div id="box">
+    <h1>Create a New Product</h1>
+    <div id="lilbox">
+      <form (submit)="addProduct()">
+        <h3>Title: <input class="fields" type="text" name="title" [(ngModel)]="newProduct.title"></h3>
+        <p class="fronterror" *ngIf="newProduct.title.length < 4">Title must be at least 4 characters long</p>
+        <h3>Price: <input class="fields" type="number" name="price" [(ngModel)]="newProduct.price"></h3>
+        <p class="fronterror" *ngIf="!newProduct.price">Price is required</p>      
+        <h3>Image URL: <input class="fields" type="text" name="image" [(ngModel)]="newProduct.image"></h3>
+        <input class="button btn btn-primary" type="submit" value="Create">
+        <button class="button btn btn-primary" [routerLink]="['/']">Cancel</button>
+      </form>
+    </div>
+    <div *ngIf="error">
+      <h2 class="backerror">{{error}}</h2>
+    </div>
+  </div>

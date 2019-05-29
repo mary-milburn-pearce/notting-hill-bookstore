@@ -16,8 +16,8 @@ require('./server/routes')(app)
 const server = app.listen(8000, function(){
     console.log("Listening on post 8000")
 });
-const io = require('socket.io')(server);
-var counter = 0;
+// const io = require('socket.io')(server);
+// var counter = 0;
 
 // io.on('connection', function (socket) { //2
   
