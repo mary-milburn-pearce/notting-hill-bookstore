@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
+import { ChatService } from './chat.service';
 
 @Component({
   selector: 'app-root',
@@ -10,21 +11,20 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit{
 
   title = 'public';
-  message: String;
 
-  constructor(private _httpService: HttpService){}
+  constructor(
+    private _httpService: HttpService,
+    private chat: ChatService
+    ){}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.chat.messages.subscribe(msg => {
+      console.log(msg);
+    })
+  }
 
   sendMessage() {
-    
+    this.chat.sendMsg("Test Message");
+    console.log("Message Sent");
   }
-  // io.on('item_in_cart', function (socket) { //2
-  
-  //   socket.emit('greeting', { msg: 'Greetings, from server Node, brought to you by Sockets! -Server' }); //3
-  //   socket.on('thankyou', function (data) { //7
-  //     console.log(data.msg); //8 (note: this log will be on your server's terminal)
-  //   });
-      
-  // });
 }
