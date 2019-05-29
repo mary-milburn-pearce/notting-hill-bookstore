@@ -6,16 +6,16 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
   constructor(private _http: HttpClient){
   }
-  getProducts(){
-    return this._http.get('/products-api');
+  getBooks(){
+    return this._http.get('/books');
   }
-  getProduct(id){
-    let url = '/products-api/' + id;
+  getBook(id){
+    let url = '/books/' + id;
     return this._http.get(url);
   }
-  // postToServer(newPet){
-  //   return this._http.post('/pets-api', newPet);  
-  // }
+  postToServer(newBook){
+    return this._http.post('/books', newBook);  
+  }
   // putToServer(id, editPet){
   //   let url = '/pets-api/' + id;
   //   console.log(`Putting to url: ${url}`, editPet);
