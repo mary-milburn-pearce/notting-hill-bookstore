@@ -1,5 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+//import { SocketIoModule, SocketIoConfig } from 'ng6-socket-io';
+import { ChatService } from './chat.service';
+import { WebsocketService } from './websocket.service';
+
+//const config: SocketIoConfig = { url: 'http://localhost:8000', options: {} };
+ 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -11,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { BookFilterPipe } from './list/list-filter.pipe';
+import { ChatComponent } from './chat/chat.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +27,9 @@ import { BookFilterPipe } from './list/list-filter.pipe';
     ListComponent,
     CreateComponent,
     EditComponent,
-    BookFilterPipe
+    BookFilterPipe,
+    ChatComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +37,11 @@ import { BookFilterPipe } from './list/list-filter.pipe';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [HttpService],
+  providers: [
+    HttpService, 
+    ChatService,
+    WebsocketService
+            ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

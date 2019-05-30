@@ -16,14 +16,25 @@ require('./server/routes')(app)
 const server = app.listen(8000, function(){
     console.log("Listening on post 8000")
 });
-// const io = require('socket.io')(server);
-// var counter = 0;
 
-// io.on('connection', function (socket) { //2
-  
-//     socket.emit('greeting', { msg: 'Greetings, from server Node, brought to you by Sockets! -Server' }); //3
-//     socket.on('thankyou', function (data) { //7
-//       console.log(data.msg); //8 (note: this log will be on your server's terminal)
-//     });
-      
-//   });
+const io = require('socket.io')(server);
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+      console.log('user disconnected');
+  });
+  socket.on('message', function(msg){
+      console.log('message: ' + msg);
+      socket.emit('message', 'Welcome to our bookstore! We will be with you shortly!');
+  });
+});
+
+
+// function startProductUpdates(io) {
+
+//   setInterval(() => {
+//     data = queryLowProducts(10);
+    
+//   }, interval);
+
+// }
