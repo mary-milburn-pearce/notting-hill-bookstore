@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
+//import { HttpService } from '../http.service';
 import { ChatService } from '../chat.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class ChatComponent implements OnInit {
   msgInput: string="";
 
   constructor(
-    private _httpService: HttpService,
+    //private _httpService: HttpService,
     private chat: ChatService
     ){}
 
@@ -26,7 +26,7 @@ export class ChatComponent implements OnInit {
 
   sendMsg() {
     console.log('Sending Message:', this.msgInput);
-    this.chat.sendMsg("Test Message");
+    this.chat.sendMsg(this.msgInput);
     this.messages.push(this.msgInput);
     this.msgInput = "";
   };
