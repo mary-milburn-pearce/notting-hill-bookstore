@@ -23,9 +23,9 @@
       <img src={{book.imageUrl}} alt="Image of {{book.title}}">
       
       <h3>Title: {{book.title}}</h3>
-      <h3>Author: {{book.firstName}}</h3>
+      <h3>Author: {{book.firstName}} {{book.lastName}}</h3>
       <h4>Price: ${{book.price}}</h4>
-      <button class="btn btn-primary" [routerLink]="['/books', 'detail']">Details</button>
+      <button class="btn btn-primary" [routerLink]="['/books', 'detail', book._id]">Details</button>
       <button class="button btn btn-primary" (click)="deleteBook(book._id)">Add to Cart</button>
     </div>
   </div>

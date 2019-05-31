@@ -20,12 +20,12 @@
             </div>
         </div>
     <div class="frame">
-      <img src={{book.imageUrl}} alt="Image of {{book.title}}">
+      <img src={{show.imageUrl}} alt="Image of {{show.title}}">
       
-      <h3>Title: {{book.title}}</h3>
-      <h3>Author: {{book.firstName}}</h3>
-      <h4>Price: ${{book.price}}</h4>
-      <button class="btn btn-primary" [routerLink]="['/books', 'detail']">Details</button>
+      <h3>Title: {{show.title}}</h3>
+      <h4>Author: {{show.firstName}} {{show.lastName}}</h4>
+      <h4>Summary: {{show.summary}}</h4>
+      <h4>Price: ${{show.price}}</h4>
       <button class="button btn btn-primary" (click)="deleteBook(book._id)">Add to Cart</button>
     </div>
   </div>

@@ -4,20 +4,23 @@
     var mongoose = require('mongoose');
     mongoose.connect('mongodb://localhost/books_db');
 
-    const AuthorSchema = new mongoose.Schema({
-        firstName: {type: String, required: [true, "Author's first name is required"]},
-        lastName: {type: String, required: [true, "Author's last name is required"]},
-        bioSummary: {type: String}
-    }, {timestamps: true})
+    // const AuthorSchema = new mongoose.Schema({
+    //     firstName: {type: String, required: [true, "Author's first name is required"]},
+    //     lastName: {type: String, required: [true, "Author's last name is required"]},
+    //     bioSummary: {type: String}
+    // }, {timestamps: true})
     const ReviewSchema = new mongoose.Schema({
         points: {type: Number, required: [true, "Rating must include point value"]},
         comment: {type: String, required: [false]},
     }, {timestamps: true})
     var BookSchema = new mongoose.Schema({
+        firstName: {type: String, required: [true, "Author's first name is required"]},
+        lastName: {type: String, required: [true, "Author's last name is required"]},
+        summary: {type: String},
         title: {type: String, required: true, minlength: 4},
         price: {type: Number, required: true},
         imageUrl: {type: String, required: false},
-        authors: [AuthorSchema],
+        // authors: [AuthorSchema],
         reviews: [ReviewSchema],
         releaseDate: {type: Date, requred: true},
         description: {type: String},

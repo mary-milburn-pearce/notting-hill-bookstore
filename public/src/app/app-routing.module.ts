@@ -9,8 +9,8 @@ import { ChatComponent } from './chat/chat.component';
 const routes: Routes = [
   {path: "", pathMatch:"full", component: HomeComponent},
   {path: "books", component: ListComponent},
-  {path: "books/:id", component: DetailComponent},
-  { path: 'chat',component: ChatComponent },
+  {path: "books/detail/:id", component: DetailComponent},
+  {path: 'chat',component: ChatComponent },
   // { path: 'prod-updates',component: CartComponent }
   // {path: "products/new", component: CreateComponent},
   // {path: "products/edit/:id", component: EditComponent}
