@@ -1,6 +1,6 @@
 <div id = 'container'>
     <div class="topnav">
-        <a class="active" href="">Home</a>
+        <a class="active" [routerLink]="['/']">Home</a>
         <!-- <a href="#news">News</a>
         <a href="#contact">Contact</a>
         -->
@@ -8,7 +8,8 @@
     
     </div>
     <div class = 'register'>
-        <a  href="#about">Login/Register</a>
+        <button [routerLink]="['/chat']">Chat</button>
+        <button [routerLink]="['/prod-updates']">Shopping Cart</button>
     </div>
     <div>
         <img src = "assets/img/books.jpg" alt = "Books Image" height="700px" width="100%" >

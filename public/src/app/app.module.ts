@@ -15,10 +15,10 @@ import { HttpService } from './http.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateComponent } from './create/create.component';
-import { EditComponent } from './edit/edit.component';
 import { BookFilterPipe } from './list/list-filter.pipe';
 import { ChatComponent } from './chat/chat.component';
-import { CartComponent } from './cart/cart.component';
+import { DetailComponent } from './detail/detail.component';
+// import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -26,10 +26,10 @@ import { CartComponent } from './cart/cart.component';
     HomeComponent,
     ListComponent,
     CreateComponent,
-    EditComponent,
     BookFilterPipe,
     ChatComponent,
-    CartComponent
+    DetailComponent,
+    // CartComponent
   ],
   imports: [
     BrowserModule,

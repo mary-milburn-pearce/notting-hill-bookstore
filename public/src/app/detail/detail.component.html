@@ -19,7 +19,7 @@
                   <button><a [routerLink]="['/books']">Search</a></button>
             </div>
         </div>
-    <div class="frame" *ngFor="let book of books | bookFilter: searchTerm">
+    <div class="frame">
       <img src={{book.imageUrl}} alt="Image of {{book.title}}">
       
       <h3>Title: {{book.title}}</h3>
