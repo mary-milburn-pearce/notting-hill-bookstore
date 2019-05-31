@@ -1,13 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-//import { SocketIoModule, SocketIoConfig } from 'ng6-socket-io';
 import { ChatService } from './chat.service';
 import { UpdateService } from './update.service';
 import { WebsocketService } from './websocket.service';
-// import { LOCAL_STORAGE, StorageServiceModule } from 'ngx-webstorage-service';
+//import { LOCAL_STORAGE, StorageServiceModule } from 'ngx-webstorage-service';
+import { CartService } from './cart.service';
 
-//const config: SocketIoConfig = { url: 'http://localhost:8000', options: {} };
- 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -43,7 +41,8 @@ import { DetailComponent } from './detail/detail.component';
     HttpService, 
     ChatService,
     UpdateService,
-    WebsocketService
+    WebsocketService,
+    CartService
             ],
   bootstrap: [AppComponent]
 })

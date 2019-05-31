@@ -6,6 +6,7 @@ const path = require('path');
 module.exports = function(app){
     app.get('/api/books', controller.getAllBooks)  
     app.get('/api/books/:id', controller.getBook)
+    app.get('/api/books/:id/purchase', controller.purchaseBook)
     app.post('/api/books', controller.addBook) 
     app.put('/api/books/:id', controller.updBook)
     app.delete('/api/books/:id', controller.remBook)

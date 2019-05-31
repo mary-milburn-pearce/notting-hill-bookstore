@@ -24,8 +24,8 @@
         reviews: [ReviewSchema],
         releaseDate: {type: Date, requred: true},
         description: {type: String},
-        // destination: {type: String, required: true},
-        // numberInStock: {type: Number, required: true},
+        destination: {type: String, required: true},
+        numberInStock: {type: Number, required: true},
         reviewAverage: {type: Number}
     }, {timestamps: true});
     mongoose.model('Book', BookSchema); // We are setting this Schema in our Models as 'Book'

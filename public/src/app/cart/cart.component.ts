@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-//import { HttpService } from '../http.service';
+import { HttpService } from '../http.service';
 import { UpdateService } from '../update.service';
+import { CartService } from '../cart.service';
 
 
 @Component({
@@ -10,30 +11,84 @@ import { UpdateService } from '../update.service';
 })
 export class CartComponent implements OnInit {
 
-  cartItems = [
-    { title: 'I love London',
-      price: 20.99,
-      numRemaining: 5 },
-    { title: 'Have you been to Paris?',
-      price: 15.99,
-      numRemaining: 3 },
-    { title: 'Do you know the way to San Jose?',
-      price: 12.50,
-      numRemaining: 1}
-  ];
-  updates = [];
+  contents = [];
+  totalBill = 0;
+  confirmation = "";
 
   constructor(
-    private update: UpdateService
+    private update: UpdateService,
+    private _cart: CartService,
+    private _http: HttpService
   ) { }
 
   ngOnInit() {
     this.update.updates.subscribe(data => {
       this.processUpdate(data);
-    })
+    });
+    this.getContents();
+    this.totalBill = this._cart.cartTotalBill();
   }
 
   processUpdate(data) {
-    console.log('Processing updates:', data)
+    for (let i = 0; i<data.length; i++) {
+      for (let j = 0; j < this.contents.length; j++) {
+        if (data[i]._id === this.contents[j]._id) {
+          this.contents[j].numberInStock = data[i].numberInStock;
+        }
+      }
+    }
+  }
+  
+  getContents() {
+    this.contents = [];
+    if ("cart" in localStorage) {
+      this.contents = JSON.parse(localStorage.getItem('cart'));
+    }
+  }
+
+  removeItem(book) {
+    let i = 0;
+    while (this.contents[i] != book) {
+      i++;
+    }
+    this.totalBill -= this.contents[i].price;
+    this.contents.splice(i, 1);
+    localStorage.setItem("cart", JSON.stringify(this.contents));
+  }
+
+  clearItems() {
+    this.contents = [];
+    localStorage.setItem("cart", JSON.stringify(this.contents));
+    this.totalBill = 0;
+  }
+
+  purchaseItems() {
+    if (this.totalBill === 0) return;
+    let purchase = [];
+    let totalCost = 0;
+    for (let i=0; i<this.contents.length; i++) {
+      if (this.contents[i].numberInStock > 0) {
+        totalCost += this.contents[i].price;
+        purchase.push(this.contents[i]);
+      }
+    }
+    for (let i = 0; i<purchase.length; i++) {
+      console.log(purchase[i].title, purchase[i].numberInStock);
+      let tempObs = this._http.purchaseOneBook(purchase[i]._id);
+      tempObs.subscribe((data:any)=>{
+        if (i === 0) {
+          this.confirmation = "Congratulations! You've purchased " + purchase[i].title;
+        } else if (i > 0 && purchase.length > (i+1)) {
+          this.confirmation += ", "  + purchase[i].title;
+        } else if (i > 0 && purchase.length === i + 1) {
+          this.confirmation += " and "  + purchase[i].title;
+        }
+        if (i === purchase.length - 1) {
+          this.confirmation += purchase[i].title + " for $" + totalCost.toFixed(2) + ".  ";
+          this.confirmation += "Come shop again!"
+          this.clearItems();
+        }
+      });
+    }
   }
 }

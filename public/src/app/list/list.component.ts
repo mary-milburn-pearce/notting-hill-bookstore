@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { CartService } from '../cart.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -11,7 +13,9 @@ export class ListComponent implements OnInit {
   books = [];
   searchTerm: string;
 
-  constructor(private _httpService: HttpService) { }
+  constructor(
+    private _httpService: HttpService,
+    private _cart: CartService) { }
 
   ngOnInit() {
     this.showPage()
@@ -31,6 +35,10 @@ export class ListComponent implements OnInit {
       console.log("Component: delete products,", data)
       this.showPage();
     })
+  }
+
+  addToCart(book) {
+    this._cart.addToCart(book);
   }
 
 }

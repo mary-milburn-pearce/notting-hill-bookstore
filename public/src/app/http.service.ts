@@ -24,8 +24,14 @@ export class HttpService {
   }
 
   editBook(id:string, editBook:object){
-console.log("Service: edit book", editBook);
+    console.log("Service: edit book", editBook);
     return this._http.put("/api/edit/"+id, editBook);
+  }
+
+  purchaseOneBook(id:string){
+    //server removes one from number in stock
+    console.log("Service: purchase book:", id);
+    return this._http.get("/api/books/"+id+"/purchase");
   }
 
   deleteBook(id:string){

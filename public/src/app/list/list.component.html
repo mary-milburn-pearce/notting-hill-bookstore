@@ -26,6 +26,11 @@
       <h3>Author: {{book.firstName}} {{book.lastName}}</h3>
       <h4>Price: ${{book.price}}</h4>
       <button class="btn btn-primary" [routerLink]="['/books', 'detail', book._id]">Details</button>
-      <button class="button btn btn-primary" (click)="deleteBook(book._id)">Add to Cart</button>
+      <!-- <button class="button btn btn-primary" (click)="deleteBook(book._id)">Add to Cart</button>
+      <h3>{{book.title}}</h3>
+      <h4>${{book.price}}</h4>
+      <button class="button btn btn-primary" [routerLink]="['/books', 'edit', book._id]">Edit</button>
+      <button class="button btn btn-primary" (click)="deleteBook(book._id)">Delete</button> -->
+      <button class="button btn btn-primary" (click)="addToCart(book)">Add To Cart</button>
     </div>
   </div>

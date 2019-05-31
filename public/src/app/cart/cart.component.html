@@ -1,3 +1,21 @@
-<p>
-  cart works!
-</p>
+<div class="container">
+  <h1>Cart</h1>
+  <div class="itemRow" *ngFor="let item of contents">
+    <img src="{{ item.imageUrl }}" alt="book" />
+    <div class="titlePriceBlock">
+      <p>{{ item.title }}</p>
+      <p>${{ item.price }}</p>
+    </div>
+    <button (click)="removeItem(item)">Remove</button>
+    <h4 *ngIf="item.numberInStock > 0 && item.numberInStock < 10" class="lowItem">Only {{ item.numberInStock }} left!</h4>
+    <h4 *ngIf="!item.numberInStock" class="lowItem">Sorry - Out of Stock!</h4>
+  </div>
+  <div *ngIf="!confirmation.length">
+    <button id="remButton" (click)="clearItems()">Remove All Items</button>
+    <h3>Total:  {{ totalBill | currency:USD }}</h3>
+    <button id ="payButton" class="button btn btn-primary" (click)="purchaseItems()">Purchase All Items</button>
+  </div>
+  <div *ngIf="confirmation.length">
+    <h4>{{ confirmation }}</h4>
+  </div>
+</div>

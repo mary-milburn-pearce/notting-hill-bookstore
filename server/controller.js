@@ -79,6 +79,22 @@ module.exports = {
                 res.json(book);
             }
         })
+    },
+
+    purchaseBook:function(req, res) {
+        Book.findById(req.params.id, function(err, data) {
+            if (err) {
+                console.log('Purchase error:', err)
+                res.json({message: "Error!", error: err});
+            }
+            else {
+                //data contains a Book object
+                data.numberInStock = data.numberInStock - 1;
+                data.save();
+                res.json(data);
+            }
+        });
+    
     }
 
 }

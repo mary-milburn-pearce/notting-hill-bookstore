@@ -8,9 +8,9 @@ module.exports = {
             if (err) {
                 console.log('Error:', err);
             } else {
-                console.log('getLowInv: got data');
+                //console.log('getLowInv: got data');
             }
-            callback({data: books});
+            callback(books);
         });
     }
     
