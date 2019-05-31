@@ -1,0 +1,41 @@
+.container {
+    width: 90%;
+}
+.itemRow {
+    border-top: 2px solid gray;
+    border-bottom: 1px solid gray;
+}
+.itemRow img {
+    display: inline-block;
+    vertical-align: top;
+    height: 150px;
+    width: 100px;
+    margin: 10px;
+}
+.itemRow button {
+    margin-top: 20px;
+}
+.titlePriceBlock {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    margin: 0px 10px;
+}
+#remButton {
+    margin: 15px;
+}
+#payButton {
+    margin: 30px 50px;
+    background-color: green;
+    color: white;
+    height: 35px;
+}
+.lowItem {
+    color: red;
+    display: inline-block;
+    margin-left: 20px;
+}
+h3 {
+    display: inline-block;
+    margin-left: 30px;
+}

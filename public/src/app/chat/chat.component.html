@@ -1,8 +1,11 @@
 
-<ul id="messages">
-  <li *ngFor="let msg of messages">{{ msg }}</li>
-</ul>
-<form id="mForm" name="mForm" action="">
-  <input type="text" [(ngModel)]="msgInput" name="msgInput" id="m" autocomplete="off" placeholder="Type message here..." />
-  <button (click)="sendMsg()">Send</button> -->
-</form>
+<div class="container">
+  <h3>How can we help you?</h3>
+  <ul id="messages">
+    <li *ngFor="let msg of messages">{{ msg }}</li>
+  </ul>
+  <form id="mForm" name="mForm" action="">
+    <input type="text" [(ngModel)]="msgInput" name="msgInput" id="m" autocomplete="off" placeholder="Type message here..." />
+    <button (click)="sendMsg()">Send</button> -->
+  </form>
+</div>

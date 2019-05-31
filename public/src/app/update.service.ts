@@ -11,7 +11,6 @@ export class UpdateService {
     this.updates = <Subject<any>>wsService
       .connectUpdates()
       .map((response: any): any => {
-        console.log('update response:', response);
         return response;
       })
    }

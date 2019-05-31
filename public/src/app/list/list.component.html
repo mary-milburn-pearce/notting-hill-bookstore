@@ -24,5 +24,6 @@
       <h4>${{book.price}}</h4>
       <button class="button btn btn-primary" [routerLink]="['/books', 'edit', book._id]">Edit</button>
       <button class="button btn btn-primary" (click)="deleteBook(book._id)">Delete</button>
+      <button class="button btn btn-primary" (click)="addToCart(book)">Add To Cart</button>
     </div>
   </div>
