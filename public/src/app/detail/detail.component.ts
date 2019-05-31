@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-detail',
@@ -11,7 +12,11 @@ export class DetailComponent implements OnInit {
   book: object;
   show: any;
 
-  constructor(private _httpService: HttpService, private _router:Router, private _route: ActivatedRoute) { }
+  constructor(
+    private _cart: CartService,
+    private _httpService: HttpService, 
+    private _router:Router, 
+    private _route: ActivatedRoute) { }
 
   ngOnInit() {
     this.findBook();
@@ -27,5 +32,7 @@ export class DetailComponent implements OnInit {
       })
     })
   }
-
+  addToCart(book) {
+    this._cart.addToCart(book);
+  }
 }

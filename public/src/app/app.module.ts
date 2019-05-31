@@ -18,7 +18,7 @@ import { CreateComponent } from './create/create.component';
 import { BookFilterPipe } from './list/list-filter.pipe';
 import { ChatComponent } from './chat/chat.component';
 import { DetailComponent } from './detail/detail.component';
-// import { CartComponent } from './cart/cart.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { DetailComponent } from './detail/detail.component';
     BookFilterPipe,
     ChatComponent,
     DetailComponent,
-    // CartComponent
+    CartComponent
   ],
   imports: [
     BrowserModule,
