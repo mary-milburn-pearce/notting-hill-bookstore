@@ -77,14 +77,17 @@ export class CartComponent implements OnInit {
       let tempObs = this._http.purchaseOneBook(purchase[i]._id);
       tempObs.subscribe((data:any)=>{
         if (i === 0) {
-          this.confirmation = "Congratulations! You've purchased " + purchase[i].title;
-        } else if (i > 0 && purchase.length > (i+1)) {
+          this.confirmation = "Congratulations! You've purchased ";
+        }
+        if (i > 0 && purchase.length > (i+1)) {
           this.confirmation += ", "  + purchase[i].title;
         } else if (i > 0 && purchase.length === i + 1) {
           this.confirmation += " and "  + purchase[i].title;
+        } else {
+          this.confirmation += purchase[i].title;
         }
         if (i === purchase.length - 1) {
-          this.confirmation += purchase[i].title + " for $" + totalCost.toFixed(2) + ".  ";
+          this.confirmation += " for $" + totalCost.toFixed(2) + ".  ";
           this.confirmation += "Come shop again!"
           this.clearItems();
         }

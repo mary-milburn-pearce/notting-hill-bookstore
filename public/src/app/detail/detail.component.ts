@@ -20,7 +20,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.findBook();
-    this.show = {imageUrl: "", title: "", firstName: "" , lastName: "" , summary: "", price: ""};
+    this.show = {imageUrl: "", title: "", firstName: "" , lastName: "" , description: "", price: ""};
   }
   findBook(){
     this._route.params.subscribe((params)=>{

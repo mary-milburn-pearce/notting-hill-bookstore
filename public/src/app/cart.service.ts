@@ -22,6 +22,7 @@ export class CartService {
     }
     cartContents.push(book);
     localStorage.setItem("cart", JSON.stringify(cartContents));
+    alert("One item added to cart");
   }
 
   cartTotalBill() {

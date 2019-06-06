@@ -1,4 +1,5 @@
 <div class="container">
+  <button [routerLink]="['/']">Home</button>
   <h1>Cart</h1>
   <div class="itemRow" *ngFor="let item of contents">
     <img src="{{ item.imageUrl }}" alt="book" />
